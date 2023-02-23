@@ -1,0 +1,31 @@
+#include<stdio.h>
+int binarysearch(int a[], int n, int k)
+{
+    int low, mid, high;
+    low=0;
+    high=n-1;
+    while(low<=high)
+    {
+        mid=(low+high)/2;
+        if(a[mid]==k)
+            return mid;
+        if(a[mid]<k)
+            low=mid+1;
+        else
+            high=mid-1;
+    }
+   return -1;
+}
+int main()
+{
+    int n=6;
+    int a[n];
+    int i, k;
+    printf("enter elements in sorted manner: ");
+    for(i=0; i<n; i++)
+        scanf("%d", &a[i]);
+    printf("enter element to search: ");
+    scanf("%d", &k);
+    int r=binarysearch(a, n, k);
+    printf("found at index %d", r);
+}
