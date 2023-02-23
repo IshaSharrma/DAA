@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<math.h>
+int binarysearch(int a[], int n, int k)
+{
+    int mid, low=0, high=n-1;
+    while(low<=high)
+    {
+        mid=(low+high)/2;
+        if(a[mid]==k)
+            return 1;
+        if(a[mid]<k)
+            low=mid+1;
+        else
+            high=mid-1;
+    }
+    return -1;
+}
+int duplicates(int a[], int n, int k)
+{
+    int res, i, j, c;
+    res=binarysearch(a, n, k);
+    if(res==1)
+    {
+        for(i=0; i<n; i++)
+        {
+            c=0;
+            for(j=0; j<n; j++)
+            {
+                if(a[i]==a[j])
+                    c++;
+            }
+        }
+        return c;
+    }
+    return -1;
+}
+int main()
+{
+    int n, i, k;
+    printf("enter size: ");
+    scanf("%d", &n);
+    int a[n];
+    printf("enter sorted array: ");
+    for(i=0; i<n; i++)
+        scanf("%d", &a[i]);
+    printf("enter target: ");
+    scanf("%d", &k);
+    int count=duplicates(a, n, k);
+    if(count>0)
+        printf("found!! %d times", count);
+    else
+        printf("not found");
+    return 0;
+}
