@@ -1,0 +1,43 @@
+#include<stdio.h>
+int indices(int a[], int n, int sum)
+{
+    int i, j, k, cs;
+    for(k=0; k<n; k++)
+    {
+        if(a[k]==sum)
+        {
+
+             for(i=0; i<n; i++)
+            {
+                cs=0;
+                for(j=i+1;j<n; j++)
+                {
+                    cs=a[i]+a[j];
+                    if(cs==sum)
+                    {
+                        printf("Sequence found!! indices %d & %d. sum is found at index %d ", i, j, k);
+                        return 1;
+                    }
+                }
+            }
+        }
+
+    }
+    return 0;
+
+}
+int main()
+{
+    int i, n, sum;
+    printf("enter size: ");
+    scanf("%d", &n);
+    int a[n];
+    printf("enter elements: ");
+    for(i=0; i<n; i++)
+        scanf("%d", &a[i]);
+    printf("enter sum: ");
+    scanf("%d", &sum);
+    int c=indices(a, n, sum);
+    if(c==0)
+        printf("not found");
+}
